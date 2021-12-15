@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<style>
+    
+       /* table {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 20px;
+            height: 100%;
+            table-layout: fixed;
+        }
+  
+        td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }*/
+  
+   /* table, tr,th, td {
+      border: 1px solid black;
+      margin-left: 50px;
+      margin-right: 50px;
+      font-size: 10px;
+      height: 50%;
+      table-layout: fixed;
+   }
+          
+   th,td,tr {
+      border: 1px solid black;
+      padding: 1px;
+      text-align: center;
+     ;
+   }*/
+          
+   .btn {
+   background-color: DodgerBlue;
+   border: none;
+   color: white;
+   padding: 12px 30px;
+   cursor: pointer;
+   font-size: 20px;
+   margin-right: 2px;
+   margin-left: 150px;
+   margin-top: 10px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+   background-color: RoyalBlue;
+}
+   .tab1{
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+   }
+</style>
+
+   <head>
+      <title>Analysis</title>
+
+   </head>
+      <!-- <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/> -->
+      <link href="{{url_for('static', filename='pdf_analysis.css') }}" rel="stylesheet"/>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+      <button> <a href="/result_analysis">Back Button</a></button> <button class="btn btn-primary" id="btnExport">Download pdf</button>   <button class="btn btn-primary" onclick="ExportToExcel('xlsx')">Download excel</button>   <button class="btn btn-primary" onclick="exportHTML();">Download word doc</button>
+      <br>
+      <body>
+         <div id="tblCustomers">
+         
+         <br/>
+         <table class="tab1" border = "1" cellpadding = "3" cellspacing = "3"  align="center">
+         <caption style="font-size: 1.8rem; font-weight: 700; ">OVERALL RESULT ANALYSIS {{request.form['Year'] + request.form['Semester'] + request.form['Branch']}} </caption>
+
+            <tr>
+               <th>Particular</th>
+               <th>Without KT (Regular)</th>
+            </tr>
+            <tr>
+               <td>Total no of Students Registered</td>
+               <td>{{total_students}}</td>
+            </tr>
+            <tr>
+               <td>Total no of Students Appeared</td>
+               <td>{{appeared_students}}</td>
+            </tr>
+            <tr>
+               <td>Total no of Students Passed</td>
+               <td>{{passed_students}}</td>
+            </tr>
+            <tr>
+               <td>Total no of Students Failed</td>
+               <td>{{failed_students}}</td>
+            </tr>
+            <tr>
+               <td>Percentage of Passing</td>
+               <td>{{passing_percentage}}</td>
+            </tr>
+            <tr>
+               <td>Total no of Students with First Class with Distinction</td>
+               <td>{{fc_distinction}}</td>
+            </tr>
+            <tr>
+               <td>Total no of students with First Class</td>
+               <td>{{fc}}</td>
+            </tr>
+            <tr>
+               <td>Total no of students with Second Class</td>
+               <td>{{sclass}}</td>
+            </tr>
+            <tr>
+               <td>Total no of students with Pass Class</td>
+               <td>{{pclass}}</td>
+            </tr>
+         </table>
+         <br>
+         <br>
+         
+         <div id="piechart_3d" style="width: 60%; height: auto; margin-left: auto; margin-right: auto;" ></div>
+        
+         <br>
+         <br>
+         
+         <br>
+         <table border = "1" cellpadding = "5" cellspacing = "5"  align="center">
+         <caption style="font-size: 1.8rem; font-weight: 500; ">Detailed Subject Wise Analysis for End Semester Theory</caption
+            <tr>
+               <th>Subject</th>
+
+               {% for item in subwise_SE %}
+               <th>{{item.subnamess}} </th>
+               {% endfor %} 
+            </tr>
+            <tr>
+               <th>Total no of Students Appeared</th>
+               {% for item in subwise_SE %}
+               <td>{{item.appearedss}}</td>
+               {% endfor %}
+            </tr>
+            <tr>
+               <th>Total no of Students Passed</th>
+               {% for item in subwise_SE %}
+               <td>{{item.valuess}}</td>
+               {% endfor %} 
+            </tr>
+            <tr>
+               <th>Passed Percentage</th>
+               {% for item in subwise_SE %}
+               <td>{{item.percentagess}}</td>
+               {% endfor %} 
+            </tr>
+         </table>
+         <br>
+         
+         <br>
+         <table border = "1" cellpadding = "5" cellspacing = "5"  align="center">
+         <caption style="font-size: 1.8rem; font-weight: 500; ">Detailed Subject Wise Analysis for Internal Assessment</caption>
+            <tr>
+               <th>Subject</th>
+               {% for item in subwise_IA %}
+               <th>{{item["subname"]}}</th>
+               {% endfor %} 
+            </tr>
+            <tr>
+               <th>Total no of Students Appeared</th>
+               {% for item in subwise_IA %}
+               <td>{{item["appeared"]}}</td>
+               {% endfor %}
+            </tr>
+            <tr>
+               <th>Total no of Students Passed</th>
+               {% for item in subwise_IA %}
+               <td>{{item["value"]}}</td>
+               {% endfor %} 
+            </tr>
+            <tr>
+               <th>Passed Percentage</th>
+               {% for item in subwise_IA %}
+               <td>{{item["percentage"]}}</td>
+               {% endfor %} 
+            </tr>
+         </table>    
+         <br>
+         
+         <br>
+         <table border = "1" cellpadding = "5" cellspacing = "5"  align="center">
+         <caption style="font-size: 1.8rem; font-weight: 500; ">Detailed Subject Wise Analysis for Practical/Oral Assessment</caption>
+            <tr>
+               <th>Subject</th>
+               {% for item in subwise_P %}
+               <th>{{item["subnames"]}}</th>
+               {% endfor %} 
+            </tr>
+            <tr>
+               <th>Total no of Students Appeared</th>
+               {% for item in subwise_P %}
+               <td>{{item["appeareds"]}}</td>
+               {% endfor %}
+            </tr>
+            <tr>
+               <th>Total no of Students Passed</th>
+               {% for item in subwise_P %}
+               <td>{{item["values"]}}</td>
+               {% endfor %} 
+            </tr>
+            <tr>
+               <th>Passed Percentage</th>
+               {% for item in subwise_P %}
+               <td>{{item["percentages"]}}</td>
+               {% endfor %} 
+            </tr>
+         </table>
+      </div>
+         
+      <!-- <input typ.....e="button" id="btnExport" value="Export" onclick="Export()" /> -->
+     <!--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
+      //pdf
+      <script type="text/javascript">
+         window.onload = function(){
+            document.getElementById("btnExport")
+            .addEventListener("click",()=>{
+            const report = this.document.getElementById("tblCustomers");
+            console.log(report);
+            console.log(window);
+            var opt = {
+                  margin:       1,
+                  filename:     'Analysis.pdf',
+                  image:        { type: 'jpeg', quality: 0.98 },
+                  html2canvas:  { scale: 2 },
+                  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+                  pagebreak:   { mode: 'avoid-all' }
+                  };
+               html2pdf().from(report).set(opt).save();
+            })
+         }
+      </script>
+      //word
+      <script type="text/javascript">
+       function exportHTML(){
+       var header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
+            "xmlns:w='urn:schemas-microsoft-com:office:word' "+
+            "xmlns='http://www.w3.org/TR/REC-html40'>"+
+            "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
+       var footer = "</body></html>";
+       var sourceHTML = header+document.getElementById("tblCustomers").innerHTML+footer;
+       
+       var source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+       var fileDownload = document.createElement("a");
+       document.body.appendChild(fileDownload);
+       fileDownload.href = source;
+       fileDownload.download = 'Analysis.doc';
+       fileDownload.click();
+       document.body.removeChild(fileDownload);
+    }
+      </script>
+      //excel
+      <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+      <script>
+      function ExportToExcel(type, fn, dl) {
+         var elt = document.getElementById('tblCustomers');
+         var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+         return dl ?
+         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+         XLSX.writeFile(wb, fn || ('Analysis.' + (type || 'xlsx')));
+         }
+      </script>
+      //pichart
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            {% for key, value in data.items() %}
+                {% if value is string %}
+                    ['{{ key }}', '{{ value }}'],
+                {% else %}
+                    ['{{ key }}', {{ value }}],
+                {% endif %}
+            {% endfor %}
+        ]);
+ 
+        var options = {
+          title: 'Progressive Pie Chart Analysis',
+          is3D: true,
+          //pieHole: 0.5
+          pieStartAngle: 100
+          /*slices: {  
+            2: {offset: 0.2},
+            3: {offset: 0.3}
+          }*/
+          /*slices: {
+            1: { color: 'transparent' }
+          }*/
+        };
+ 
+      var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+      var my_chart = new google.visualization.PieChart(piechart_3d);
+      google.visualization.events.addListener(my_chart, 'ready', function () {
+      piechart_3d.innerHTML = '<img src="' + my_chart.getImageURI() + '">';
+      });
+       
+      my_chart.draw(data, options);
+      }
+    </script>
+
+
+</body>
+</html>

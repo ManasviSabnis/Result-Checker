@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style-login.css') }}">
+    <style>
+        .srouce{
+            text-align: center;
+            color: #ffffff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="form-container">
+
+            <div class="srouce"><a title="Learn How to create Beautiful HTML & CSS login page template" href="https://www.w3jar.com/beautiful-html-css-login-page-template/"></a></div>
+
+            <div class="form-body">
+                <h2 class="title">Log in with</h2>
+           
+                <div class="_or">or</div>
+
+                <form action="/dashboard" class="the-form">
+
+                    <label >Email</label>
+                    <input type="email" name="username"  placeholder="username">
+
+                    <label >Password</label>
+                    <input type="password" name="pass" placeholder="Password">
+
+                    <input type="submit" value="Log In">
+
+                </form>
+
+            </div><!-- FORM BODY-->
+
+        </div><!-- FORM CONTAINER -->
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>
+            Result Checker
+        </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel='stylesheet' type="text/css" href="{{url_for('static', filename='result.css') }}">
+    </head>
+    <body>
+        <div class="container-contact100">
+            <div class="wrap-contact100">
+    
+    
+                <form class="contact100-form validate-form" method="post" name="result_search" action="/result_page">
+                    <span class="contact100-form-title">Result</span>
+                        
+                        <ul class="contact100-form-title">
+                            <div class="alert alert-danger alert-dismissible" role="alert" style="font-size: 30px; font-family: Times New Roman;">
+                            </div>
+                        </ul>
+    
+                    <div class="wrap-input100 input100-select bg1">
+                        <span class="label-input100">Choose Semester </span>
+                        <div>
+                          <!--   <select class="js-select2" name="year">
+                                <option>1st Year</option>
+                                <option>2nd Year</option>
+                                <option>3rd Year</option>
+                                <option>4th Year</option>
+                            </select> -->
+                            <select class="js-select2" name="Semester">
+                                <option disabled hidden selected>Select Semester</option>
+                                <option  value="SEMI">SEMI</option>
+                                <option value="SEMII">SEMII</option>
+                                <option value="SEMIII">SEMIII</option>
+                                <option value="SEMIV">SEMIV</option>
+                                <option value="SEMV">SEMV</option>
+                                <option value="SEMVI">SEMVI</option>
+                                <option value="SEMVII">SEMVII</option>
+                                <option value="SEMVIII">SEMVIII</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 input100-select bg1">
+                        <span class="label-input100">Type Year</span>
+                        <div>
+                            <input type="text" name="Year" placeholder="Enter Year" autocomplete="off">
+                        </div>
+                    </div>
+                     <div class="wrap-input100 input100-select bg1">
+                        <span class="label-input100">Choose Branch </span>
+                        <div>
+                          <select class="js-select2" name="Branch">
+                                <option disabled hidden selected>Select Branch</option>
+                                <option>CS</option>
+                                <option>EXTC</option>
+                                <option>IT</option>
+                                <option>ETRX</option>
+                            </select> 
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+    
+                    <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Seat No.">
+                        <span class="label-input100">Seat No</span>
+                        <input class="input100" type="text" name="seat_no" placeholder="Enter Your Seat No." autocomplete="off">
+                    </div>
+    
+                    <div class="container-contact100-form-btn">
+                        
+                        <button class="contact100-form-btn">
+                            <span>
+                                Get Result
+                                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                   
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+<link rel="stylesheet" href="{{url_for('static', filename='style-login.css') }}">
+<div class="container">
+    <div class="row">
+        <div class="loginbox">
+            <img src="static/login.jpg" class="login">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h1>Login Here</h1>
+            <form method=POST action="{{ url_for('login') }}">
+                <!-- <div class="form-group"> -->
+                    <p>Username</p>
+                    <input type="email" name="username" placeholder="Enter Username" autocomplete="off">
+                    <p>Password</p>
+                    <input type="password" name="pass" placeholder="Enter Password" autocomplete="off">
+                    <input type="submit" value="Login" a href = "/dashboard">
+                    Don't have an account? <a href="/register">Sign up here</a>.
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

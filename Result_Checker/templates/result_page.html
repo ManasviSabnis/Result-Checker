@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+<title>Result</title>
+<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="{{url_for('static', filename='pdf.css') }}" rel="stylesheet"/>
+<script src="{{url_for('static', filename='pdf.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+<style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+          
+        th,td {
+            padding: 1px;
+        }
+          
+        th, td {
+            text-align: center;
+        }
+        /* Style buttons */
+.btn {
+background-color: DodgerBlue;
+border: none;
+color: white;
+padding: 12px 30px;
+cursor: pointer;
+font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+background-color: RoyalBlue;
+}
+    </style>
+</head>
+<body>
+<!-- <div class="card" id="report">This is result</div> -->
+<div class="container d-flex justify-content-center mt-50 mb-50">
+<div class="row">
+<div class="col-md-12 text-right mb-3">
+<button class="btn btn-primary" id="download">download pdf</button>
+<br/>
+<br/>
+<div class="card" id="report">
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>SEAT NO.</th>
+<th>21124002</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Name of the Student</th>
+<td>ANSARI BASIT AHEMAD AMIR AHMED SHAGUFTA</td>
+</tr>
+<tr>
+<th>Engineering Mathematics  I V SE 80</th>
+<td>75</td>
+</tr>
+<tr>
+<th>Engineering Mathematics I V IA 20</th>
+<td>20</td>
+</tr>
+<tr>
+<th>Engineering Mathematics  I V TOT 100</th>
+<td>95.0</td>
+</tr>
+<tr>
+<th>Engineering Mathematics I V TW 25</th>
+<td>20</td>
+</tr>
+<tr>
+<th>Analysis Of Algorithm SE 80</th>
+<td>68</td>
+</tr>
+<tr>
+<th>Analysis Of Algorithm IA 20</th>
+<td>19</td>
+</tr>
+<tr>
+<th>Analysis Of Algorithm TOT 100</th>
+<td>87</td>
+</tr>
+<tr>
+<th>Database Management System SE 80</th>
+<td>65</td>
+</tr>
+<tr>
+<th>Database Management System IA 20</th>
+<td>18</td>
+</tr>
+<tr>
+<th>Database Management System TOT 100</th>
+<td>83</td>
+</tr>
+<tr>
+<th>Operating System SE 80</th>
+<td>70</td>
+</tr>
+<tr>
+<th>Operating System IA 20</th>
+<td>17</td>
+</tr>
+<tr>
+<th>Operating System TOT 100</th>
+<td>87</td>
+</tr>
+<tr>
+<th>Microprocessor SE 80</th>
+<td>69</td>
+</tr>
+<tr>
+<th>Microprocessor IA 20</th>
+<td>17</td>
+</tr>
+<tr>
+<th>Microprocessor TOT 100</th>
+<td>86</td>
+</tr>
+<tr>
+<th>Analysis Of Algorithm TW 25</th>
+<td>20</td>
+</tr>
+<tr>
+<th>Analysis Of Algorithm Lab P&amp; 25</th>
+<td>22</td>
+</tr>
+<tr>
+<th>Analysis Of Algorithm Lab TOT 50</th>
+<td>42</td>
+</tr>
+<tr>
+<th>Database Management System TW 25</th>
+<td>21</td>
+</tr>
+<tr>
+<th>Database Management System Lab P&amp; 25</th>
+<td>19</td>
+</tr>
+<tr>
+<th>Database Management System Lab TOT 50</th>
+<td>40</td>
+</tr>
+<tr>
+<th>Operating System Lab TW 25</th>
+<td>22</td>
+</tr>
+<tr>
+<th>Operating System Lab P&amp; 25</th>
+<td>21</td>
+</tr>
+<tr>
+<th>Operating System Lab TOT 50</th>
+<td>43</td>
+</tr>
+<tr>
+<th>Microprocesso r Lab TW 25</th>
+<td>24</td>
+</tr>
+<tr>
+<th>Skill Base Lab Course: Python Programming TW 25</th>
+<td>22</td>
+</tr>
+<tr>
+<th>Mini Project 1 TW 25</th>
+<td>22</td>
+</tr>
+<tr>
+<th>Mini Project 1 - B P&amp; 25</th>
+<td>23</td>
+</tr>
+<tr>
+<th>Mini Project 1 - B TOT 50\r\n</th>
+<td>45</td>
+</tr>
+<tr>
+<th>Out of 775</th>
+<td>674</td>
+</tr>
+<tr>
+<th>GPA</th>
+<td>10.0</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</body>
+</html>

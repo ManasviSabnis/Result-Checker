@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <!-- <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script> -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar Dashboard Template</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styledash.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+  </head>
+  <body>
+<!-- {% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %} -->
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>RESULT <span>CHECKER</span></h3>
+      </div>
+      <div class="right_area">
+        <a href="/main" onsubmit = "preventBack()" class="logout_btn">Logout</a>
+      </div>
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+      <div class="nav_bar">
+        <img src="kj_logo.jpeg" class="mobile_profile_image" alt="">
+        <i class="fa fa-bars nav_btn"></i>
+      </div>
+      <div class="mobile_nav_items">
+        <a href="/insert_sheet"><i class="fas fa-cogs"></i><span>INSERT RESULT FILE</span></a>
+        <a href="/result_analysis"><i class="fas fa-table"></i><span>RESULT ANALYSIS</span></a>
+        <!-- <a href="#"><i class="fas fa-th"></i><span>CHANGE PASSWORD</span></a> -->
+      </div>   
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+      <div class="profile_info">
+        <img src="/static/images/kj.jpeg" class="profile_image" alt="">
+        <h4>KJSIEIT</h4>
+      </div>
+      <a href="/insert_sheet"><i class="fas fa-cogs"></i><span>INSERT RESULT FILE</span></a>
+      <a href="/result_analysis"><i class="fas fa-table"></i><span>RESULT ANALYSIS</span></a>
+      <!-- <a href="#"><i class="fas fa-th"></i><span>CHANGE PASSWORD</span></a> -->
+     
+    </div>
+    <style>
+      .const{
+        /*width: 1000px;
+        height: 500px;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 5%;
+        border: 2px dashed ;
+        padding: 10px;
+      }*/
+      height:100%;
+      overflow: hidden;
+    }
+    </style>
+    <!--sidebar end-->
+
+    <div class="content">
+      <div class="const">
+        <p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </p>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script>
+
+  </body>
+</html>
+      

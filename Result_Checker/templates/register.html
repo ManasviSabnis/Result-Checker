@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style-register.css') }}">
+<body>
+<div class="container">
+    <div class="row">
+        <div class="loginbox">
+            <img src="static/login.jpg" class="login">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h1>Register Here</h1>
+            <form method=POST action="{{ url_for('register') }}">
+                <p>Enter Username</p>
+                <input type="email" name="username" placeholder="Enter Your Email" autocomplete="off">
+                <p>Create Password</p>
+                <input type="password" name="pass" placeholder="Enter Password" autocomplete="off">
+                <input type="submit" a href="/index" value="Sign Up">
+                <!-- <button type="submit" class="btn btn-primary btn-block" a href="/index">Register</button> -->
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+</body>
+</head>>
+</html>
